@@ -19,10 +19,34 @@ const storage = multer.diskStorage({
 // Single Vs Multiple Images [ array ]
 // 1MB = 1000000 bytes
 
+
 const upload = multer({
   storage : storage,
-  limits : {fileSize: 1000000}
+  limits : {fileSize: 1000000},
+  fileFilter: function(req,file,cb){
+     // Check File Type
+    checkFileType(file, cb)
+  }
 }).single('myUploadedImage')
+
+
+// Check File Extension ( jpeg / jpg / png / gif ) & Mine/Type
+
+function checkFileType(file,cb) {
+  // Allowed Extention
+  const filetypes = /jpeg|jpg|png|gif/ ;
+
+  // Check Extension
+  const extname = filetypes.test(path.extname(file.originalname).toLowerCase())
+  const mimetype = filetypes.test(file.mimetype);
+
+  if(mimetype && extname) {
+    return cb(null,true)
+  }else {
+    cb('Error: Images Only...')
+  }
+}
+
 
 // Initializing Express Server
 const app = express();
@@ -44,12 +68,23 @@ app.get('/' , (req,res) => {
 app.post('/upload' , (req,res) => {
 
   upload(req,res, (err) => {
-    if(err) {
+    if(err)
+    {
       res.render('index' , {
         msg : err
       })
-    }else{
-      console.log(req.file)
+    }
+    else
+    {
+          if(req.file == undefined) {
+            res.render('index' , {
+              msg : "No File Attached..."
+            })
+          }
+          res.render("index" , {
+            msgSuccess : "Image Uploaded Successfully!",
+            image : `uploads/${req.file.filename}`
+          })
     }
   })
 
