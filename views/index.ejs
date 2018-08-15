@@ -10,9 +10,12 @@
   <title>NodeJs File Uploader</title>
 </head>
 <body>
+
+<!-- Input Type = File    ===>  enctype="multipart/form-data"  -->
+
 <div class="container">
-  <form action="/upload" method="POST">
-    <h2>NodeJs File Uploader</h2>
+<form action="/upload" method="POST" enctype="multipart/form-data">
+  <h2>NodeJs File Uploader</h2>
 
 <!-- Dynamic Error Messages  -->
     <%= typeof msg != 'undefined' ? msg : '' %>
@@ -21,7 +24,7 @@
    <div class="file-field input-field">
      <div class="btn grey">
        <span>Upload Image</span>
-       <input name="myImage" type="file" multiple>
+       <input name="myUploadedImage" type="file" multiple>
      </div>
      <div class="file-path-wrapper">
        <input class="file-path validate" type="text" placeholder="Upload one or more files">
