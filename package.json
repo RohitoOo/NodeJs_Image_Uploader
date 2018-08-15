@@ -1,0 +1,16 @@
+{
+  "name": "image_uploader",
+  "version": "1.0.0",
+  "description": "Image Uploader Using Multer / Nodejs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rohito Bhambhani",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "multer": "^1.3.1"
+  }
+}
