@@ -28,13 +28,24 @@
        <input name="myUploadedImage" type="file" multiple>
      </div>
      <div class="file-path-wrapper">
-       <input class="file-path validate" type="text" placeholder="Upload Single or Multiple Images..." >
+       <input class="file-path validate" type="text" placeholder="Upload An Image..." >
      </div>
    </div>
    <button type="submit" class="btn btn-primary"> Submit </button>
    <!-- Dynamic Success Messages  -->
        <h5 class="blue"><strong><%= typeof msgSuccess != 'undefined' ? msgSuccess : '' %></strong></h5>
    <!-- Dynamic Success Messages  -->
+
+   <% if (images.length) {
+     %><ul>
+       <% images.forEach((image) => {
+         %>
+         <image src="/uploads/<%= image.filename %>" style="width:100%"></image>
+           <li><%= image.originalname %></li><br>
+         <%
+       }) %>
+     </ul><%
+   } %>
 
  </form>
  </div>

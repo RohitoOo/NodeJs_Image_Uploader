@@ -27,7 +27,7 @@ const upload = multer({
      // Check File Type
     checkFileType(file, cb)
   }
-}).single('myUploadedImage')
+}).array('myUploadedImage')
 
 
 // Check File Extension ( jpeg / jpg / png / gif ) & Mine/Type
@@ -67,24 +67,25 @@ app.get('/' , (req,res) => {
 
 app.post('/upload' , (req,res) => {
 
+
   upload(req,res, (err) => {
-    if(err)
-    {
+
+    if(err){
       res.render('index' , {
         msg : err
       })
-    }
-    else
-    {
-          if(req.file == undefined) {
+    }else{
+
+          if(req.files.length < 1) {
             res.render('index' , {
               msg : "No File Attached..."
             })
-          }
-          res.render("index" , {
+          }else{
+          res.render("upload" , {
             msgSuccess : "Image Uploaded Successfully!",
-            image : `uploads/${req.file.filename}`
+            images : req.files
           })
+        }
     }
   })
 
