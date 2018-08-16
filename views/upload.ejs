@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
 
   <title>NodeJs File Uploader</title>
 </head>
@@ -15,10 +15,10 @@
 
 <div class="container">
 <form action="/upload" method="POST" enctype="multipart/form-data">
-  <h2>NodeJs File Uploader</h2>
+  <h2 style="font-family: fantasy">NodeJs File Uploader</h2>
 
 <!-- Dynamic Error Messages  -->
-    <h5 class="text-danger"><strong><%= typeof msg != 'undefined' ? msg : '' %></strong></h5>
+    <h5 class="text-danger" ><strong><%= typeof msg != 'undefined' ? msg : '' %></strong></h5>
 <!-- Dynamic Error Messages  -->
 
    <div class="file-field input-field">
@@ -31,9 +31,12 @@
        <input class="file-path validate" type="text" placeholder="Upload An Image..." >
      </div>
    </div>
-   <button type="submit" class="btn btn-primary"> Submit </button>
+   <button type="submit" class="btn btn-primary" > Submit </button><br>
+
+
+
    <!-- Dynamic Success Messages  -->
-       <h5 class="blue"><strong><%= typeof msgSuccess != 'undefined' ? msgSuccess : '' %></strong></h5>
+   <div class="card-panel"><strong><%= typeof msgSuccess != 'undefined' ? msgSuccess : '' %></strong></div>
    <!-- Dynamic Success Messages  -->
 
    <% if (images.length) {
@@ -49,6 +52,8 @@
 
  </form>
  </div>
+
+
 
 <!-- J Query CDN Needed for Materialize  -->
   <script

@@ -78,11 +78,11 @@ app.post('/upload' , (req,res) => {
 
           if(req.files.length < 1) {
             res.render('index' , {
-              msg : "No File Attached..."
+              msg : "No File Attached...",
             })
           }else{
           res.render("upload" , {
-            msgSuccess : "Image Uploaded Successfully!",
+            msgSuccess : "Upload Successful!",
             images : req.files
           })
         }
